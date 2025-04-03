@@ -4,6 +4,7 @@ import {environment} from '../../../environments/environment';
 import {GiphyResponse} from '../interfaces/giphy.interfaces';
 import {Gif} from '../interfaces/gif.interface';
 import {GifMapper} from '../mapper/gif.mapper';
+import {map} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -24,15 +25,17 @@ export class GifsService {
         api_key: environment.apiKeyGIPHY,
         limit: 20
       }
-    }).subscribe(
-      (resp) => {
-
-
-
-        const gifs = GifMapper.mapGiphyItemsToGifArray(resp.data)
+    }).pipe(
+      map((resp): Gif[] => {
+        return resp.data.map(giphyItem => ({
+          id: giphyItem.id,
+          title: giphyItem.title,
+          url: giphyItem.images.original.url
+        }))
+      })
+    ).subscribe(
+      (gifs: Gif[]) => {
         console.log({gifs});
-
-
       }
     )
   }
