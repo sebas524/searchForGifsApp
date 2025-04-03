@@ -1,5 +1,6 @@
 import {Component, input} from '@angular/core';
 import {GridListItemComponent} from '../grid-list-item/grid-list-item.component';
+import {Gif} from '../../interfaces/gif.interface';
 
 @Component({
   selector: 'app-grid-list',
@@ -10,6 +11,6 @@ import {GridListItemComponent} from '../grid-list-item/grid-list-item.component'
 export class GridListComponent {
 
 
-  imageUrlsGridList = input.required<string[]>()
+  imageUrlsGridList = input.required<Gif[]>()
 
 }
