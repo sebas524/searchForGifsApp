@@ -1,0 +1,14 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+
+  @for (imageUrl of imageUrlsGridList(); track imageUrl) {
+
+
+    <app-grid-list-item [imageUrlGridListItem]="imageUrl"></app-grid-list-item>
+
+
+
+  }
+
+
+</div>
