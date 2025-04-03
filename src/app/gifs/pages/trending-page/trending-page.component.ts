@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {GridListComponent} from '../../components/grid-list/grid-list.component';
+import {GifsService} from '../../services/gifs.service';
 
 
 @Component({
@@ -9,6 +10,9 @@ import {GridListComponent} from '../../components/grid-list/grid-list.component'
   styleUrl: './trending-page.component.css'
 })
 export class TrendingPageComponent {
+
+
+  gifsService = inject(GifsService)
 
 
   imageUrls: string[] = [
